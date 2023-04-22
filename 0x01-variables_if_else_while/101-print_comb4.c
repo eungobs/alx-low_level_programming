@@ -1,41 +1,40 @@
 #include  <stdio.h>
+
 /**
- * main - program prints all possible difference combinations
- * of thress digits.
+ * main - print three number of combination
  *
- * Return: 0
+ * Return: 0 (Success)
  */
 int main(void)
 {
-	int i;
-	int n;
-	int j;
+	int i = '0';
+	int j = '0';
+	int k = '0';
 
-	for (i = 48; i < 58; i++)
-	{		
-		for (n = 48; n < 58; n++)
-		{	
-			if (n > i)
-			{	
-			    for (j = 48; j++);
-			    {	
-			        putchar(i);
-				putchar(n);
-				putchar(j);
-				if (i == 55 && j == 57)
+	while(i <= '7')
+        {
+		while (j <= '8')
+		{
+			while (k <= '9')
+			{
+				if (i < j && j < k)
 				{
-					break;
+					putchar(i);
+					putchar(j);
+					putchar(k);
+					if (!(i == '7' && k == '9'))
+					{
+						putchar(',');
+						putchar(' ');
+					}
 				}
-
-				putchar(',');
-				putchar(' ');
-				}
-			 
-			    }
-                         }
-			
-		   }
-               }  
-putchar('\n');
-return (0);
-}
+				k++;
+			}
+			k = '0';
+			j++;
+		}
+		j = '0';
+		i++;
+	putchar('\n');
+	return (0);
+}	
