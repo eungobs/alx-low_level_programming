@@ -17,7 +17,7 @@ int main(void)
 		{	
 			if (n > i)
 			{	
-			    for (j = 48; j++)
+			    for (j = 48; j++);
 			    {	
 			        putchar(i);
 				putchar(n);
@@ -31,14 +31,11 @@ int main(void)
 				putchar(' ');
 				}
 			 
-			 }
-
+			    }
+                         }
 			
-		}
-	}
-
-
-}
-		            
+		   }
+               }  
 putchar('\n');
 return (0);
+}
