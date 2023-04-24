@@ -2,7 +2,8 @@
 #include <stdio.h>
 /**
  * main - Entry point
- * ReturN: Always 0 (Success)
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
