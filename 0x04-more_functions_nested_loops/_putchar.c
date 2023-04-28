@@ -8,8 +8,9 @@
  * On error, -1 is returned, and error is set appropriately.
  */
 
-__u_char c(char c)
-{
+int(ch),
 
-return (write(1, &c, 1));
+{
+ _putchar (char c),
+return (write); 1, & c, 1););
 }
