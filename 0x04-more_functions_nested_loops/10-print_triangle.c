@@ -4,7 +4,8 @@
  * @size: The number of squres/number of times
  * Return: empty
  */
-void print_triangle(int size)
+
+void print_triangle(int size);
 
 {
 int x, y;
