@@ -6,17 +6,12 @@
  * Return:void
  */
 
-void print_alphabet_x10 iprint lowercase aplhabeti 10 times
-*/
-
-void print_alphabet_x10(void);
+void print_alphabet_x10(void)
 {
-	char num,letter;
 
-	for(num = 0 ;num <=9,num++)
-        
-	{
-
-	for (num = 'a'; letter <= 'z'; letter++)
-	  
-
+char num, letter;
+{
+for (num = 0; num <= 9; num++)
+}
+for (num = 'a'; letter <= 'z'; letter++)
+}
