@@ -17,13 +17,13 @@ char *leet(char *s)
 	while (*(s + i) != '\0')
 	{
 		for (j = 0; j <= 9; j++)
-		{
+                {
 			if (*(s + 1) == a[j])
-			{
+                        {
 				*(s + i) = n[j];
-			}
-		}
+                        }
+	        }
 		i++;
-	}
+        }
 	return (s);
 }
