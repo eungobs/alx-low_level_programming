@@ -1,27 +1,47 @@
 #include "main.h"
 
 /**
- * *rot13 - encodes a string using rot13
- * @s: the string
- *
- * Return: the encoded string
- */
+* print_number - print an int numbers.
+* @n: number tested
+* Return: Always 0.
+*/
+void print_number(int n)
+{
+int i, j, digit, digits, power;
+unsigned int temp, numchar, number;
 
-char *rot13(char *s)
+digit = 0;
+if (n < 0)
 {
-int i, j;
-char *letters1 = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
-char *letters2 = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
-for (i = 0; s[i] != '\0'; i++)
-{
-for (j = 0; j < 52; j++)
-{
-if (s[i] == letters1[j])
-{
-				s[i] = letters2[j];
-				break;
-			}
-		}
+_putchar('-');
+temp = -n;
 }
-return (s);
+else
+{
+temp = n;
+}
+
+number = temp;
+
+while (number >= 10)
+{
+number = number / 10;
+digit++;
+}
+digits = digit + 1;
+power = 1;
+i = 1;
+
+while (i < digits)
+{
+power = power * 10;
+i++;
+}
+j = power;
+while (j >= 1)
+{
+numchar = (temp / j) % 10;
+_putchar(numchar + '0');
+j = j / 10;
+}
 }
