@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * *leet - change vowels to numbers.
+ * leet - change vowels to numbers.
  * @s: analized string.
  *
  * Return:string with all vowels changed.
