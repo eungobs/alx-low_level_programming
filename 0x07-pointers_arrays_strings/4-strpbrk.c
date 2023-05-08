@@ -2,17 +2,26 @@
 #include <stdio.h>
 
 /**
-* main - check the code for Holberton School students.
+* _strpbrk - function that searches a string for any of a set of bytes..
+*@s: first value -char
+*@accept: second value - char
 *
-* Return: Always 0.
+* Return: char with result
 */
-int main(void)
+char *_strpbrk(char *s, char *accept)
 {
-    char *s = "hello, world";
-    char *f = "world";
-    char *t;
+int j = 0;
 
-    t = _strpbrk(s, f);
-    printf("%s\n", t);
-    return (0);
+while (*s)
+{
+while (accept[j] != '\0')
+{
+if (*s == accept[j])
+return (s);
+j++;
+}
+j = 0;
+s++;
+}
+return ('\0');
 }
