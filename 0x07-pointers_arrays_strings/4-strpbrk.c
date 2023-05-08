@@ -1,20 +1,18 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
-* print_chessboard - function that prints the chessboard.
-*@a: first value -char
+* main - check the code for Holberton School students.
 *
+* Return: Always 0.
 */
-void print_chessboard(char (*a)[8])
+int main(void)
 {
-int i, j;
+    char *s = "hello, world";
+    char *f = "world";
+    char *t;
 
-for (i = 0; i < 8; i++)
-{
-for (j = 0; j < 8; j++)
-{
-putchar (a[i][j]);
-}
-putchar('\n');
-}
+    t = _strpbrk(s, f);
+    printf("%s\n", t);
+    return (0);
 }
