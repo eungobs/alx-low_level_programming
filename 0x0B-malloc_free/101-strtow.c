@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
 * strtow - concatenates all the arguments of your program
 *@str: string
@@ -13,7 +12,6 @@ char **strtow(char *str)
 int i, w, j, k, count, m, wordf;
 char **p;
 char *x;
-
 w = 0;
 j = 0;
 i = 0;
