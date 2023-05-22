@@ -23,10 +23,10 @@ if (p == NULL)
 free(p);
 return (NULL);
 }
-for (i = 0; name[i]; i++);
-
-for (j = 0; owner[j]; j++);
-
+for (i = 0; name[i]; i++)
+;
+for (j = 0; owner[j]; j++)
+;
 p->name = malloc(i + 1);
 p->owner = malloc(j + 1);
 
