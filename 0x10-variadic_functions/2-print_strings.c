@@ -2,28 +2,30 @@
 #include <stdarg.h>
 #include <stdio.h>
 /**
-* print_strings - function that prints strings.
-* @separator: the string to be printed between the strings.
-* @n: the number of strings passed to the function.
+* print_strings - Entry Point
+* @separator: comma space
+* @n: number of elements
 * Return: void
 */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
 char *sep, *ptr;
-unsigned int t;
+unsigned int i;
 va_list list;
+
 if (separator == NULL || *separator == 0)
 sep = "";
 else
 sep = (char *) separator;
 va_start(list, n);
+
 if (n > 0)
 printf("%s", va_arg(list, char *));
-for (t = 1; t < n; t++)
+for (i = 1; i < n; i++)
 {
 ptr = va_arg(list, char*);
 if (ptr == NULL)
-ptr = "(null)";
+ptr = "(nil)";
 printf("%s%s", sep, ptr);
 }
 printf("\n");
