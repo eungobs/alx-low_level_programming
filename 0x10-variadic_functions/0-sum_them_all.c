@@ -17,5 +17,5 @@ for (s = 0; s < n; s++)
 sum += va_arg(valist, int);
 }
 va_end(valist);
-return (0);
+return (sum);
 }
