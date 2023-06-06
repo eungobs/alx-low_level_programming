@@ -5,14 +5,24 @@
 * @head: head of the list
 * Return:  the size of the list that was free’d
 */
-void free_listint(listint_t *head)
+size_t free_listint_safe(listint_t **h)
 {
-    listint_t *temp;
+    size_t count;
+    listint_t *current, *tmp;
 
-    while (head != NULL)
+    if (h == NULL || *h == NULL)
+        return (0);
+
+    current = *h;
+    *h = NULL;
+    count = 0;
+    while (current != NULL)
     {
-        temp = head;
-        head = head->next;
-        free(temp);
+        tmp = current;
+        current = current->next;
+        free(tmp);
+        count++;
     }
+
+    return (count);
 }
