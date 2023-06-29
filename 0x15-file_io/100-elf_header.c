@@ -218,7 +218,7 @@ while (address_size && !*(--buffer))
 --address_size;
 printf("%x", *buffer & 0xff);
 while (--address_size > 0)
-printf("%02x", *(--buffer) & 0xff);
+printf("%02x", *(--buffer) &0xff);
 }
 printf("\n");
 }
@@ -245,17 +245,6 @@ if (fd == -1)
 write(STDERR_FILENO, "Error: Can't read from file\n", 28);
 exit(98);
 }
-_read(fd, (char *) buffer, 18);
-elf_magic(buffer);
-bit_mode = elf_class(buffer);
-big_endian = elf_data(buffer);
-elf_version(buffer);
-elf_osabi(buffer);
-elf_abivers(buffer);
-elf_type(buffer, big_endian);
-lseek(fd, 24, SEEK_SET);
-_read(fd, (char *) buffer, bit_mode / 8);
-elf_entry(buffer, bit_mode, big_endian);
-_close(fd);
+
 return (0);
 }
