@@ -1,14 +1,14 @@
-#include  <fcntl.h>
 #include <elf.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 /**
 * _strncmp - compare two strings
 * @s1: the first string
 * @s2: the second string
 * @n: the max number of bytes to compare
-*
 * Return: 0 if the first n bytes of s1 and s2 are equal, otherwise non-zero
 */
 int _strncmp(const char *s1, const char *s2, size_t n)
@@ -71,7 +71,6 @@ printf("%02x%c", buffer[i], i < 15 ? ' ' : '\n');
 /**
 * elf_class - print ELF class
 * @buffer: the ELF header
-*
 * Return: bit mode (32 or 64)
 */
 size_t elf_class(const unsigned char *buffer)
@@ -93,12 +92,12 @@ return (32);
 /**
 * elf_data - print ELF data
 * @buffer: the ELF header
-*
 * Return: 1 if big endian, otherwise 0
 */
 int elf_data(const unsigned char *buffer)
 {
 printf("  %-34s ", "Data:");
+
 if (buffer[EI_DATA] == ELFDATA2MSB)
 {
 printf("2's complement, big endian\n");
@@ -149,9 +148,9 @@ const char *os_table[19] = {
 "AROS",
 "FenixOS",
 "Nuxi CloudABI",
-"Stratus Technologies OpenVOS"
+"Stratus Technologies OpenVOS",
 };
-printf("  %-34s ", "OS/ABI:");
+printf("%-34s", "OS/ABI:");
 if (buffer[EI_OSABI] < 19)
 printf("%s\n", os_table[(unsigned int) buffer[EI_OSABI]]);
 else
@@ -227,7 +226,6 @@ printf("\n");
 * main - copy a file's contents to another file
 * @argc: the argument count
 * @argv: the argument values
-*
 * Return: Always 0
 */
 int main(int argc, const char *argv[])
