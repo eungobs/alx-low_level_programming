@@ -1,6 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
-
+#ifndef ELF_FILE
+#define ELF_FILE
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
