@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "main.h"
 /**
 * read_textfile - that reads a text file and prints
 * @filename: variable pointer
@@ -12,7 +12,7 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-ssize_t file, let;
+ssize_t file;
 char *text;
 
 text = malloc(letters);
@@ -22,7 +22,7 @@ return (0);
 if (filename == NULL)
 return (0);
 
-file = popen(filename, O_RDONLY);
+file = open(filename, O_RDONLY);
 
 if (file == -1)
 
