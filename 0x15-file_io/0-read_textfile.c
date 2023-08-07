@@ -1,4 +1,7 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 /**
 * read_textfile - read a textfile.
@@ -10,30 +13,42 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-int fd_read, count_chars, fd_open;
-char *buf_letters;
+int fd;
+ssize_t bytes_read, bytes_written;
+char *buffer;
 
 if (filename == NULL)
 return (0);
-fd_open = open(filename, O_RDONLY);
-if (fd_open == -1)
+
+fd = open(filename, O_RDONLY);
+if (fd == -1)
 return (0);
-buf_letters = malloc(sizeof(char) * letters);
-if (buf_letters == NULL)
-return (0);
-fd_read = read(fd_open, buf_letters, letters);
-if (fd_read == -1)
+
+buffer = malloc(sizeof(char) * letters);
+if (buffer == NULL)
 {
-free(buf_letters);
+close(fd);
 return (0);
 }
-count_chars = write(STDOUT_FILENO, buf_letters, fd_read);
-if (count_chars == -1)
+
+bytes_read = read(fd, buffer, letters);
+if (bytes_read == -1)
 {
-free(buf_letters);
+free(buffer);
+close(fd);
 return (0);
 }
-close(fd_open);
-free(buf_letters);
-return (count_chars);
+
+bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+if (bytes_written == -1 || bytes_written != bytes_read)
+{
+free(buffer);
+close(fd);
+return (0);
+}
+
+free(buffer);
+close(fd);
+
+return (bytes_written);
 }
