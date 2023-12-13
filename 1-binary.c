@@ -2,8 +2,10 @@
 #define SEARCH_ALGOS_H
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stddef.h>
 
+/* Function prototypes */
+int recursive_binary_search(int *array, int left, int right, int value);
 int binary_search(int *array, size_t size, int value);
 void print_search(int *array, int first, int last);
 
@@ -11,96 +13,64 @@ void print_search(int *array, int first, int last);
 
 #include "search_algos.h"
 
-int recursive_binary_search(int *array, int left, int right, int value);
-
 /**
- * binary_search - Searches value in array of ints using the Binary search algo
+ * binary_search - Searches for a value in a sorted array using Binary Search
  *
- * @array: Array to search
+ * @array: Pointer to the first element of the array
+ * @size: Number of elements in the array
+ * @value: Value to search for
  *
- * @size: Size of the array
- *
- * @value: Value to search
- *
- * Return: First index where value is located or -1 for NULL array
+ * Return: Index where value is located or -1 if not found
  */
-
-int binary_search(int *array, size_t size, int value)
-{
-    /* Check inputs and call recursive search return value */
-    if (array && size)
-    {
-        return (recursive_binary_search(array, 0, (int)size - 1, value));
+int binary_search(int *array, size_t size, int value) {
+    if (array && size) {
+        return recursive_binary_search(array, 0, size - 1, value);
     }
-    /* Otherwise return -1 */
-    return (-1);
+    return -1;
 }
 
 /**
- * recursive_binary_search - Recursively breaks array into subarrays & searches
+ * recursive_binary_search - Recursively performs Binary Search
  *
  * @array: Array to search
+ * @left: Left index of the sub-array
+ * @right: Right index of the sub-array
+ * @value: Value to search for
  *
- * @left: Search on left side of array
- *
- * @right: Search on right side of array
- *
- * @value: Value to search
- *
- * Return: First index where value is located or -1 for NULL array
+ * Return: Index where value is located or -1 if not found
  */
-
-int recursive_binary_search(int *array, int left, int right, int value)
-{
+int recursive_binary_search(int *array, int left, int right, int value) {
     int middle;
 
-    /* If value is smaller then middle, look in first half of array */
-    if (right >= left)
-    {
+    if (right >= left) {
         middle = left + (right - left) / 2;
         print_search(array, left, right);
 
-        /* If search finds value in middle, return value */
-        if (array[middle] == value)
-        {
-            return (middle);
+        if (array[middle] == value) {
+            return middle;
+        } else if (array[middle] > value) {
+            return recursive_binary_search(array, left, middle - 1, value);
+        } else {
+            return recursive_binary_search(array, middle + 1, right, value);
         }
-
-        /* If element is less than middle, search left subarray */
-        if (array[middle] > value)
-        {
-            return (recursive_binary_search(array, left, middle - 1, value));
-        }
-
-        /* Otherwise search for value in right subarray */
-        return (recursive_binary_search(array, middle + 1, right, value));
     }
-    /* If element doesn't exist return -1 */
-    return (-1);
+    return -1; /* Element not found */
 }
 
 /**
- * print_search - Prints array and side of array
+ * print_search - Prints the elements being searched in the array
  *
- * @array: Array to search
- *
- * @first: left hand side of array
- *
- * @last: right hand side of array
- *
- * Return: Void
+ * @array: Array being searched
+ * @first: Index of the first element in the current sub-array
+ * @last: Index of the last element in the current sub-array
  */
-
-void print_search(int *array, int first, int last)
-{
-    int index = 0;
-
+void print_search(int *array, int first, int last) {
     printf("Searching in array: ");
-
-    while (first <= last)
-    {
-        if (index > 0)
-        {
+    for (; first <= last; ++first) {
+        printf("%d", array[first]);
+        if (first < last) {
             printf(", ");
         }
-        index = first++;
+    }
+    printf("\n");
+}
