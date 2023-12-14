@@ -4,11 +4,8 @@
 This project focuses on implementing various search algorithms in C language. It covers topics related to understanding search algorithms, including their time and space complexities.
 
 ## Project Information
-- Author: Wilfried Hennuyer
-- Start Date: Dec 11, 2023, 6:00 AM
-- End Date: Dec 14, 2023, 6:00 AM
-- Checker Release Date: Dec 12, 2023, 12:00 AM
-- Auto Review Launch: An auto review will be initiated at the deadline
+- Start Date: Dec 11, 2023,
+- End Date: Dec 14, 2023,
 
 ## Resources
 - [Search algorithm](https://en.wikipedia.org/wiki/Search_algorithm)
@@ -18,11 +15,7 @@ This project focuses on implementing various search algorithms in C language. It
 Upon completion of this project, you are expected to comprehend the following concepts without the aid of external resources:
 - What is a search algorithm
 - Understanding of linear search and binary search
-- Determining the best search algorithm based on specific needs
-
-## Copyright - Plagiarism
-To meet the learning objectives, solutions must be developed independently, ensuring originality. Avoiding plagiarism is mandatory. No project content should be published.
-
+- Determining the best search algorithm based on specific
 ## Requirements
 - Allowed editors: vi, vim, emacs
 - Compilation on Ubuntu 20.04 LTS using gcc with specified options
