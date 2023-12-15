@@ -1,41 +1,50 @@
 #include "search_algos.h"
 
-/**
-*interpolation_search - function that  searches
-*for a value in a sorted array of integers
-*@array: pointer to the first element of the array to search in
-*@size: number of elements in array
-*@value: the value to search for
-*Return: first index where value is located
-*/
+#define PRINT_CHECKED(array, index) \
+(printf("Value checked array[%lu] = [%d]\n", (mid), (array)[mid]))
 
+#define PRINT_NOT_IN_RANGE(index) \
+(printf("Value checked array[%lu] is out of range\n", (mid)))
+
+#define MID_POS(arr, lo, hi, val) \
+((lo) + (double)((hi) - (lo)) / ((arr)[hi] - (arr)[lo]) * ((val) - (arr)[lo]))
+
+/**
+* interpolation_search - search for a value in a sorted array of integers
+* @array: the array of values
+* @size: the number of values
+* @value: the value to locate
+*
+* Return: If value is not present in array or array is NULL, return -1.
+* Otherwise, returh the first index where value is located.
+*/
 int interpolation_search(int *array, size_t size, int value)
 {
-size_t i, l, r;
+size_t lo = 0, hi = size - 1, mid = 0;
 
-if (array == NULL)
-return (-1);
+if (array && size)
+{
+while (1)
+{
+mid = MID_POS(array, lo, hi, value);
 
-for (l = 0, (r = size - 1); r >= l;)
-{
-i = l + (((double)(r - l) / (array[r] - array[l])) * (value - array[l]));
-if (i < size)
-{
-printf("Value checked array [%ld] = [%d]\n", i, array[i]);
-}
-else
-{
-printf("Value checked array [%ld] is out of range\n", i);
+if (mid > hi)
 break;
-}
 
-if (array[i] == value)
-return (i);
-if (array[i] > value)
-r = i - 1;
+PRINT_CHECKED(array, mid);
+
+if (lo == hi)
+return (array[lo] == value ? (int) lo : -1);
+
+if (array[mid] == value)
+return (mid);
+
+if (array[mid] < value)
+lo = mid + 1;
 else
-l = i + 1;
+hi = mid - 1;
+}
+PRINT_NOT_IN_RANGE(mid);
 }
 return (-1);
-
 }
